@@ -1539,9 +1539,9 @@ input.main-search-input::placeholder {
   text-align: center;
   background-color: var(--bg2);
 }
-@media (max-width: 1199px) {
+@media (min-width: 1199px) {
   .header-5 .mega-menu-wrapper .header-main .header-right .sidebar__toggle {
-    display: block !important;
+    display: none !important;
   }
 }
 .header-5 .mega-menu-wrapper .header-main .header-right .header-button .theme-btn {
