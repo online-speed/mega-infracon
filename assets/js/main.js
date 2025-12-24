@@ -490,6 +490,51 @@
             });
         }
 
+        const btn = document.getElementById("newYearBtn");
+
+        // 🎆 CONFETTI FUNCTION (Reusable)
+        function playConfetti(duration = 4000) {
+        const end = Date.now() + duration;
+
+        (function frame() {
+            confetti({
+            particleCount: 8,
+            startVelocity: 30,
+            spread: 360,
+            ticks: 200,
+            origin: {
+                x: Math.random(),
+                y: Math.random() * 0.5
+            },
+            colors: ['#FFD700', '#FF3CAC', '#784BA0', '#2B86C5', '#FFFFFF']
+            });
+
+            if (Date.now() < end) {
+            requestAnimationFrame(frame);
+            }
+        })();
+        }
+
+        // 1️⃣ AUTO CONFETTI ON PAGE LOAD (once)
+        window.addEventListener("load", () => {
+
+        // Optional: only once per user
+        if (!localStorage.getItem("nyAutoPlayed")) {
+            playConfetti(5000); // 5 sec
+            localStorage.setItem("nyAutoPlayed", "yes");
+        }
+
+        });
+
+        // 2️⃣ CONFETTI ON BUTTON CLICK
+        btn.addEventListener("click", () => {
+        playConfetti(4000);
+        });
+
+
+
+
+
         //>>Background image Start <<//
         $("[data-background").each(function () {
             $(this).css(
